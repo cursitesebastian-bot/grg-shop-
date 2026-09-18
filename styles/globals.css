@@ -1,0 +1,22 @@
+@import "tailwindcss";
+:root {
+  --ink: #f5f2ea;
+  --bg-deep: #0e2a21;
+  --bg-deeper: #020404;
+  --muted: #9fb8ac;
+  --accent: #cfff5c;
+  --line: rgba(245, 242, 234, 0.16);
+  --nav-height-desktop: 106px;
+  --nav-height-tablet: 92px;
+  --nav-height-mobile: 60px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
