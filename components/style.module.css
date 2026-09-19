@@ -16,10 +16,7 @@
   left: 0;
   z-index: 100;
   background: transparent;
-  transition: background-color 0.35s ease, box-shadow 0.35s ease,
-    opacity 0.6s ease, transform 0.6s ease;
- 
-  /* Landing animation: starts hidden/above, slides down into place */
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, opacity 0.6s ease, transform 0.6s ease;
   opacity: 0;
   transform: translateY(-20px);
 }
@@ -86,6 +83,7 @@
   background-color: transparent;
   border-bottom: 1px solid transparent;
   transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+  font-size: 0.85rem;
 }
  
 .wrapper.scrolled .mainNav {
@@ -98,6 +96,7 @@
   font-weight: 700;
   color: var(--ink);
   letter-spacing: -0.02em;
+  
 }
  
 .dot {
@@ -240,4 +239,631 @@
   }
 }
  /*for items*/
- 
+.categorySection {
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.9s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.categoryVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 28px;
+}
+
+.categoryTitleWrapper {
+  display: block;
+}
+
+.categorySmallLabel {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #999;
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 0.7s ease 0.15s,
+    transform 0.7s ease 0.15s;
+}
+
+.categoryVisible .categorySmallLabel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.categoryTitle {
+  margin: 0;
+  font-size: clamp(20px,2vw, 58px);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: #111;
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    opacity 0.8s ease 0.25s,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+
+.categoryVisible .categoryTitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.categoryViewAll {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  cursor: pointer;
+  transition: gap 0.3s ease;
+}
+
+.categoryViewAll span {
+  font-size: 17px;
+  transition: transform 0.3s ease;
+}
+
+.categoryViewAll:hover {
+  gap: 16px;
+}
+
+.categoryViewAll:hover span {
+  transform: translate(3px, -3px);
+}
+
+.categoryLine {
+  width: 100%;
+  height: 1px;
+
+  background: #e8e8e8;
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+
+.categoryVisible .categoryLine {
+  transform: scaleX(1);
+}
+
+.categoryGrid {
+  display: flex;
+  gap: 20px;
+  margin-top: 45px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.categoryGrid::-webkit-scrollbar {
+  display: none;
+}
+.categoryCard {
+  flex: 0 0 calc((100% - 140px) / 8);
+  min-width: 0;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(45px) scale(0.92);
+  transition: opacity 0.8s ease var(--delay),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--delay);
+}
+
+.categoryVisible .categoryCard {
+  opacity: 1;
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+.categoryImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.categoryCircle {
+  position: absolute;
+  width: 82%;
+  height: 82%;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: scale(0.7);
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s ease;
+}
+
+.categoryCard:hover .categoryCircle {
+  transform: scale(0.9);
+  background: #ffffff;
+}
+
+.categoryImage {
+  position: relative;
+  z-index: 2;
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.categoryCard:hover .categoryImage {
+  transform:
+    scale(1.12)
+    rotate(-3deg);
+}
+
+.categoryArrow {
+  position: absolute;
+  right: 7%;
+  top: 7%;
+  z-index: 5;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #111;
+  color: white;
+  font-size: 13px;
+  opacity: 0;
+  transform:
+    translate(8px, -8px)
+    scale(0.7);
+  transition:
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.categoryCard:hover .categoryArrow {
+  opacity: 1;
+  transform:
+    translate(0, 0)
+    scale(1);
+}
+
+.categoryCard h3 {
+  margin: 17px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #171717;
+  transition:
+    transform 0.4s ease;
+}
+
+.categoryCard:hover h3 {
+  transform: translateY(-3px);
+}
+@media (max-width: 1100px) {
+  .categoryCard {
+    flex: 0 0 160px;
+  }
+}
+
+@media (max-width: 650px) {
+  .categorySection {
+    padding: 60px 20px;
+  }
+
+  .categoryGrid {
+    gap: 14px;
+    margin-top: 30px;
+    margin-right: -20px;
+    padding-right: 20px;
+  }
+
+  .categoryCard {
+    flex: 0 0 125px;
+  }
+
+  .categoryCard h3 {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1100px) {
+  .categoryGrid {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 45px;
+  }
+}
+
+@media (max-width: 650px) {
+  .categorySection {
+    padding: 60px 20px;
+  }
+
+  .categoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 15px;
+    margin-top: 30px;
+  }
+
+  .categoryTitle {
+    font-size: 30px;
+  }
+}
+
+/*sportscard*/
+.sportsSection {
+  width: 100%;
+  padding:15px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.sportsHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 35px;
+
+  animation: headingLand 0.9s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.sportsHeading h1 {
+  margin: 0;
+
+  font-size: clamp(50px, 8vw, 110px);
+  line-height: 0.9;
+
+  font-weight: 900;
+  letter-spacing: -5px;
+
+  color: #1D1D1F;
+
+  animation: wordDrop 1s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.headingLine {
+  width: 80px;
+  height: 1px;
+  background: #111;
+
+  transform: scaleX(0);
+
+  animation: lineReveal 0.8s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    0.25s forwards;
+}
+
+
+
+.sportsGrid {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.sportsCard {
+  position: relative;
+
+  height: 260px;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #111;
+
+  cursor: pointer;
+}
+
+.sportsCardLeft {
+  animation: cardLeft 1s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    0.35s both;
+}
+
+.sportsCardRight {
+  animation: cardRight 1s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    0.5s both;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.sportsCardImage {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s
+    cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.sportsCard:hover .sportsCardImage {
+  transform: scale(1.05);
+}
+
+
+/* =========================
+   OVERLAY
+========================= */
+
+.sportsOverlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.sportsContent {
+  position: absolute;
+
+  left: 24px;
+  bottom: 24px;
+
+  z-index: 2;
+
+  color: white;
+
+  max-width: 270px;
+
+  animation: contentUp 0.8s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    0.85s both;
+}
+
+.sportsContent > span {
+  display: block;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+
+  margin-bottom: 7px;
+}
+
+.sportsContent h2 {
+  margin: 0;
+
+  font-size: 25px;
+  line-height: 1.05;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+.sportsContent p {
+  margin: 7px 0 14px;
+
+  font-size: 10px;
+  line-height: 1.4;
+
+  opacity: 0.85;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.sportsButton {
+  border: none;
+
+  background: white;
+  color: #111;
+
+  padding: 8px 12px;
+
+  border-radius: 30px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    gap 0.25s ease;
+}
+
+.sportsButton:hover {
+  transform: translateY(-2px);
+  gap: 12px;
+}
+
+.arrow {
+  font-size: 13px;
+
+  margin: 0;
+
+  letter-spacing: 0;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes headingLand {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wordDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-80px) scale(1.15);
+  }
+
+  70% {
+    transform: translateY(8px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lineReveal {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes cardLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-120px) rotate(-2deg);
+  }
+
+  70% {
+    transform: translateX(10px) rotate(0.3deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@keyframes cardRight {
+  0% {
+    opacity: 0;
+    transform: translateX(120px) rotate(2deg);
+  }
+
+  70% {
+    transform: translateX(-10px) rotate(-0.3deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@keyframes contentUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .sportsSection {
+    padding: 15px 12px;
+  }
+
+  .sportsHeading {
+    gap: 15px;
+  }
+
+  .sportsHeading h1 {
+    font-size: 55px;
+    letter-spacing: -3px;
+  }
+
+  .headingLine {
+    width: 40px;
+  }
+
+  .sportsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sportsCard {
+    height: 230px;
+  }
+}

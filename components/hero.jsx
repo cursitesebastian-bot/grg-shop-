@@ -29,14 +29,14 @@ const defaultFeatures = [
  
 export default function Hero({
   eyebrow = 'New season',
-  title = 'Tennis',
+  title = 'GOLF',
   subtitle = 'Gear for a stronger you',
-  description = 'Premium tennis gear for every game, every level, every you.',
+  description = 'Premium golf gear for every game, every level, every you.',
   ctaText = 'Shop New Arrivals',
   ctaHref = '/shop',
   tagline = ['Game', 'Set', 'You ♡' ,'perfect'],
   // Drop any image URL here (Unsplash, Pinterest, your own /public asset, etc.)
-  imageSrc = 'https://images.unsplash.com/photo-1509586721451-a990371f8243?q=80&w=1861&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  imageSrc = 'https://images.unsplash.com/photo-1500932334442-8761ee4810a7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   imageAlt = '',
   features = defaultFeatures,
 }) {
