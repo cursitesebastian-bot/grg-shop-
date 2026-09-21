@@ -1,14 +1,19 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-import Nav from "@/components/navbar"
-import Hero from '@/components/hero'
-import Item from '@/components/item'
+import Hero from "@/components/hero";
+import CategorySection from "@/components/item";
+import SportsCards from "@/components/sportscard";
+import Collection from "@/components/collection";
+import Footer from "@/components/footer";
+import Decor from "@/components/demo"
+
 export default function Home() {
-   return ( 
-   <> <Nav/> 
-   <Hero />
-   <Item/>
+  return (
+    <>
+      <Hero />
+      <CategorySection />
+      <SportsCards />
+      <Collection />
+      <Decor/>
+      <Footer />
     </>
-     );
-    
-  } 
+  );
+}
