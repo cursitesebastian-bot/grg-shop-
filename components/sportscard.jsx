@@ -1,28 +1,44 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./style.module.css";
 
 const cards = [
   {
     image: "https://i.pinimg.com/736x/cf/c7/d0/cfc7d0bf8bffb8c16bbe403467ad778d.jpg",
-    label: "RACKETS",
+    label: "ACCESSORIES",
     title: "POWER YOUR GAME",
     description: "Precision. Control. Performance.",
-    button: "SHOP APPAREL",
+    button: "SHOP ACCESSERIES",
   },
   {
-    image: "https://i.pinimg.com/736x/c8/fa/32/c8fa322f00c6aa4941d4955f269fdc22.jpg",
+    image: "https://i.pinimg.com/1200x/ec/59/44/ec5944ebb63b2869beb08188d36f7c29.jpg",
     label: "APPAREL",
     title: "MOVE BEYOND",
-    description: "Tennis wear designed for confidence.",
+    description: "golf wear designed for confidence.",
     button: "SHOP APPAREL",
   },
 ];
 
 export default function SportsCards() {
+  const sectionRef = useRef(null);
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) {
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.classList.add(styles.sportsVisible);
+          observer.unobserve(section);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <section className={styles.sportsSection}>
-      
-
+    <section ref={sectionRef} className={styles.sportsSection}>
       <div className={styles.sportsGrid}>
         {cards.map((card, index) => (
           <div
@@ -58,9 +74,7 @@ export default function SportsCards() {
       </div>
       <div className={styles.sportsHeading}>
         <div className={styles.headingLine} />
-
         <h1>PLAY</h1>
-
         <div className={styles.headingLine} />
       </div>
     </section>

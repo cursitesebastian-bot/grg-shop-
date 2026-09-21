@@ -174,7 +174,6 @@
   .mainNav {
     padding: 0.8rem 1.5rem;
   }
- 
   .links {
     gap: 1.2rem;
   }
@@ -185,11 +184,9 @@
   .topBar {
     display: none;
   }
- 
   .mainNav {
     padding: 1rem;
   }
- 
   .links {
     display: flex;
     flex-direction: column;
@@ -201,28 +198,23 @@
     background: var(--bg-deeper);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
     z-index: 50;
- 
     /* Smooth slide-down/fade transition instead of instant show/hide */
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     transition: max-height 0.4s ease, opacity 0.3s ease;
   }
- 
   .linksOpen {
     max-height: 400px; /* enough to fit all links */
     opacity: 1;
   }
- 
   .links a {
     padding: 1rem;
     border-bottom: 1px solid var(--line);
   }
- 
   .links a::after {
     display: none; /* underline effect looks odd in the mobile dropdown */
   }
- 
   .hamburger {
     display: block;
   }
@@ -233,7 +225,6 @@
   .logo {
     font-size: 1.2rem;
   }
- 
   .icons {
     gap: 0.7rem;
   }
@@ -242,7 +233,7 @@
 .categorySection {
   width: 100%;
   padding: 10px;
-  background: #fff;
+  background: #ffffff;
   overflow: hidden;
   opacity: 0;
   transform: translateY(50px);
@@ -537,7 +528,11 @@
   justify-content: center;
   gap: 25px;
   margin-bottom: 35px;
+  opacity: 0;
+  transform: translateY(-60px);
+}
 
+.sportsVisible .sportsHeading {
   animation: headingLand 0.9s
     cubic-bezier(0.16, 1, 0.3, 1)
     both;
@@ -553,7 +548,11 @@
   letter-spacing: -5px;
 
   color: #1D1D1F;
+  opacity: 0;
+  transform: translateY(-80px) scale(1.15);
+}
 
+.sportsVisible .sportsHeading h1 {
   animation: wordDrop 1s
     cubic-bezier(0.16, 1, 0.3, 1)
     both;
@@ -565,13 +564,13 @@
   background: #111;
 
   transform: scaleX(0);
+}
 
+.sportsVisible .headingLine {
   animation: lineReveal 0.8s
     cubic-bezier(0.16, 1, 0.3, 1)
     0.25s forwards;
 }
-
-
 
 .sportsGrid {
   width: 100%;
@@ -582,32 +581,27 @@
   gap: 16px;
 }
 
-
 /* =========================
    CARDS
 ========================= */
 
 .sportsCard {
   position: relative;
-
   height: 260px;
-
   overflow: hidden;
-
   border-radius: 10px;
-
   background: #111;
-
   cursor: pointer;
+  opacity: 0;
 }
 
-.sportsCardLeft {
+.sportsVisible .sportsCardLeft {
   animation: cardLeft 1s
     cubic-bezier(0.16, 1, 0.3, 1)
     0.35s both;
 }
 
-.sportsCardRight {
+.sportsVisible .sportsCardRight {
   animation: cardRight 1s
     cubic-bezier(0.16, 1, 0.3, 1)
     0.5s both;
@@ -621,12 +615,9 @@
 .sportsCardImage {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   transition:
     transform 0.7s
     cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -644,7 +635,6 @@
 .sportsOverlay {
   position: absolute;
   inset: 0;
-
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0.65) 0%,
@@ -660,16 +650,16 @@
 
 .sportsContent {
   position: absolute;
-
   left: 24px;
   bottom: 24px;
-
   z-index: 2;
-
   color: white;
-
   max-width: 270px;
+  opacity: 0;
+  transform: translateY(30px);
+}
 
+.sportsVisible .sportsContent {
   animation: contentUp 0.8s
     cubic-bezier(0.16, 1, 0.3, 1)
     0.85s both;
@@ -677,32 +667,24 @@
 
 .sportsContent > span {
   display: block;
-
   font-size: 10px;
   font-weight: 600;
-
   letter-spacing: 1.5px;
-
   margin-bottom: 7px;
 }
 
 .sportsContent h2 {
   margin: 0;
-
   font-size: 25px;
   line-height: 1.05;
-
   font-weight: 800;
-
   letter-spacing: -0.5px;
 }
 
 .sportsContent p {
   margin: 7px 0 14px;
-
   font-size: 10px;
   line-height: 1.4;
-
   opacity: 0.85;
 }
 
@@ -713,24 +695,16 @@
 
 .sportsButton {
   border: none;
-
   background: white;
   color: #111;
-
   padding: 8px 12px;
-
   border-radius: 30px;
-
   font-size: 9px;
   font-weight: 700;
-
   display: flex;
   align-items: center;
-
   gap: 8px;
-
   cursor: pointer;
-
   transition:
     transform 0.25s ease,
     gap 0.25s ease;
@@ -743,9 +717,7 @@
 
 .arrow {
   font-size: 13px;
-
   margin: 0;
-
   letter-spacing: 0;
 }
 
@@ -867,3 +839,4 @@
     height: 230px;
   }
 }
+
