@@ -38,10 +38,8 @@ const categories = [
 
 function CategorySection() {
   const sectionRef = useRef(null);
-
   useEffect(() => {
     const section = sectionRef.current;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -51,29 +49,22 @@ function CategorySection() {
       },
       {
         threshold: 0.2,
-      }
+      },
     );
 
     if (section) {
       observer.observe(section);
     }
-
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef}
-      className={styles.categorySection}
-    >
+    <section ref={sectionRef} className={styles.categorySection}>
       <div className={styles.categoryHeader}>
         <div className={styles.categoryTitleWrapper}>
-          <span className={styles.categorySmallLabel}>
-            EXPLORE
-          </span>
+          <span className={styles.categorySmallLabel}>EXPLORE</span>
 
-          <h2 className={styles.categoryTitle}>
-            Shop by category
-          </h2>
+          <h2 className={styles.categoryTitle}>Shop by category</h2>
         </div>
 
         <button className={styles.categoryViewAll}>
@@ -102,9 +93,7 @@ function CategorySection() {
                 className={styles.categoryImage}
               />
 
-              <div className={styles.categoryArrow}>
-                ↗
-              </div>
+              <div className={styles.categoryArrow}>↗</div>
             </div>
 
             <h3>{category.name}</h3>

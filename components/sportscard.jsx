@@ -56,14 +56,10 @@ export default function SportsCards() {
             />
 
             <div className={styles.sportsOverlay} />
-
             <div className={styles.sportsContent}>
               <span>{card.label}</span>
-
               <h2>{card.title}</h2>
-
               <p>{card.description}</p>
-
               <button className={styles.sportsButton}>
                 {card.button}
                 <span className={styles.arrow}>→</span>
